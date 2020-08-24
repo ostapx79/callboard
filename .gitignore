@@ -3,6 +3,8 @@ db.sqlite3
 
 venv
 local_settings.py
+settings.py
+*settings.py
 
 **/migrations/**
 !**/migrations
@@ -10,6 +12,8 @@ local_settings.py
 __pycache__/
 */__pycache__/
 *.py[cod]
+.py~
+*.py~
 .pyc
 *.pyc
 media/*
