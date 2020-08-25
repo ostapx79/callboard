@@ -35,6 +35,7 @@ class FilterAdvert(models.Model):
     class Meta:
         verbose_name = "Фильтр"
         verbose_name_plural = "Фильтры"
+        ordering = ["id"]
 
 
 class DateAdvert(models.Model):
@@ -47,8 +48,9 @@ class DateAdvert(models.Model):
         return self.name
 
     class Meta:
-        verbose_name = "Фильтр"
-        verbose_name_plural = "Фильтры"
+        verbose_name = "Срок"
+        verbose_name_plural = "Сроки"
+        ordering = ["id"]
 
         
 class Advert(models.Model):
