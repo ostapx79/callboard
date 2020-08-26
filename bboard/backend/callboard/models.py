@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.urls import reverse
 from mptt.models import MPTTModel, TreeForeignKey
 
 
@@ -78,6 +79,9 @@ class Advert(models.Model):
 
     def __str__(self):
         return self.subject
+
+    def get_absolute_url(self):
+        return reverse("advert-detail", kwargs={"category": self.category.slug, "slug": self.slug})
 
     class Meta:
         verbose_name = "Объявление"

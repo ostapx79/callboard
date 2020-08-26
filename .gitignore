@@ -17,6 +17,14 @@ __pycache__/
 .pyc
 *.pyc
 media/*
+.html~
+*.html~
+bboard/templates/callboard/advert-detail.html~
+*/bboard/templates/callboard/advert-detail.html~
+*/.#*.py#
+*/#*.py#
+/.#*.py#
+/#*.py#
 
 .Ds_Store
 *.egg-info/
