@@ -6,4 +6,5 @@ from .models import Profile
 class ProfileAdmin(admin.ModelAdmin):
     """Профель пользователя"""
 
-    list_display = ("user", "email_two", "first_name")
+    list_display = ("user", "first_name", "last_name", "phone", "email_two")
+    search_fields = ("user", "first_name", "last_name", "phone", "email_two")
