@@ -51,3 +51,22 @@ class AdvertDetailSer(serializers.ModelSerializer):
             "created",
             "user"
         )
+
+
+class AdvertCreateSer(serializers.ModelSerializer):
+    """Добавление объявления"""
+
+    class Meta:
+        model = Advert
+        fields = (
+            "category",
+            "filters",
+            "date",
+            "subject",
+            "description",
+            #"images",
+            #"file",
+            "price",
+            #"created",
+            "user"
+        )
