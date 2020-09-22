@@ -28,7 +28,15 @@ class AdvertListSer(serializers.ModelSerializer):
     
     class Meta:
         model = Advert
-        fields = ("category", "filters", "subject", "images", "price", "created", "slug")
+        fields = ("id",
+                  "category",
+                  "filters",
+                  "subject",
+                  "images",
+                  "price",
+                  "created",
+                  "slug"
+        )
 
 
 class AdvertDetailSer(serializers.ModelSerializer):
@@ -64,9 +72,11 @@ class AdvertCreateSer(serializers.ModelSerializer):
             "date",
             "subject",
             "description",
-            #"images",
-            #"file",
             "price",
-            #"created",
-            "user"
+            #"images
         )
+
+    def create(self, request):
+        request["user"] = self.context['request'].user
+        advert = Advert.objects.create(**request)
+        return advert

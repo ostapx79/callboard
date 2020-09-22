@@ -25,6 +25,6 @@ class AdvertDetail(generics.RetrieveAPIView):
 class AdvertCreate(generics.CreateAPIView):
     """Добавление объявления"""
 
-    permission_classes = [permissions.IsAuthenticated]
-    model = Advert
+    queryset = Advert.objects.all()
     serializer_class = AdvertCreateSer
+    permission_classes = [permissions.IsAuthenticated]
