@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-#from backend.gallery.serializers import GallerySer
+# from backend.gallery.serializers import GallerySer
 from .models import *
 
 
@@ -10,7 +10,7 @@ class UserSer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("username", "email")
-        
+
 
 class ProfileSer(serializers.ModelSerializer):
     """Профиль пользователя"""
@@ -19,7 +19,13 @@ class ProfileSer(serializers.ModelSerializer):
 
     class Meta:
         model = Profile
-        fields = ("user", "avatar", "email_two", "phone", "first_name", "last_name")
+        fields = (
+            "user",
+            "avatar",
+            "email_two",
+            "phone",
+            "first_name",
+            "last_name")
 
 
 class ProfileUpdateSer(serializers.ModelSerializer):

@@ -7,13 +7,16 @@ from django.dispatch import receiver
 
 class Profile(models.Model):
     """Модель профеля пользователя"""
-    
-    user = models.OneToOneField(User, verbose_name="Пользователь", on_delete=models.CASCADE)
-    avatar = models.ImageField("Аватар", upload_to="profile/", blank=True, null=True)
+
+    user = models.OneToOneField(
+        User, verbose_name="Пользователь", on_delete=models.CASCADE)
+    avatar = models.ImageField(
+        "Аватар", upload_to="profile/", blank=True, null=True)
     email_two = models.EmailField("Доп. email")
     phone = models.CharField("Телефон", max_length=25)
     first_name = models.CharField("Имя", max_length=50)
-    last_name = models.CharField("Фамилия", max_length=50, blank=True, null=True)
+    last_name = models.CharField(
+        "Фамилия", max_length=50, blank=True, null=True)
     slug = models.SlugField("URL", max_length=50, default='')
     # TODO: Адрес, гео база.
 
@@ -23,10 +26,9 @@ class Profile(models.Model):
 #    def save(self, *args, **kwargs):
 #        super().save(*args, **kwargs)
 #        self.slug = "{}{}".format(self.user_id, self.first_name)
-        
+
 #    def get_absolute_url(self):
 #        return reverse("profile-detail", kwargs={"slug": self.user.username})
-
 
     class Meta:
         verbose_name = "Профиль"
@@ -38,7 +40,8 @@ def create_user_profile(sender, instance, created, **kwargs):
     """Создание профиля пользователя при регистрации"""
 
     if created:
-        Profile.objects.create(user=instance) # id=instance.id
+        Profile.objects.create(user=instance)  # id=instance.id
+
 
 @receiver
 def save_user_profile(sender, instance, **kwargs):

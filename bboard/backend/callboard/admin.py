@@ -6,7 +6,7 @@ from .models import Category, FilterAdvert, DateAdvert, Advert
 @admin.register(Category)
 class CategoryAdmin(MPTTModelAdmin):
     """Категории"""
-    
+
     list_display = ("name", "parent", "id")
     mptt_level_indent = 20
     prepopulated_fields = {"slug": ("name", )}

@@ -7,6 +7,7 @@ from backend.callboard.serializers import AdvertListSer, AdvertCreateSer
 from .models import Profile
 from .serializers import ProfileSer, ProfileUpdateSer, AvatarUpdateSer
 
+
 class ProfileDetail(generics.RetrieveAPIView):
     """Профиль пользователя"""
 

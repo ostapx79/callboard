@@ -3,6 +3,7 @@ from rest_framework import serializers
 from backend.gallery.serializers import GallerySer
 from .models import *
 
+
 class CategorySer(serializers.ModelSerializer):
     """Для вывода категрий"""
 
@@ -18,24 +19,25 @@ class FilterAdvertSer(serializers.ModelSerializer):
         model = FilterAdvert
         fields = ("name", )
 
-        
+
 class AdvertListSer(serializers.ModelSerializer):
     """Для вывода списока объявлений"""
 
     category = CategorySer()
     filters = FilterAdvertSer()
     images = GallerySer(read_only=True)
-    
+
     class Meta:
         model = Advert
-        fields = ("id",
-                  "category",
-                  "filters",
-                  "subject",
-                  "images",
-                  "price",
-                  "created",
-                  "slug"
+        fields = (
+            "id",
+            "category",
+            "filters",
+            "subject",
+            "images",
+            "price",
+            "created",
+            "slug"
         )
 
 
@@ -45,7 +47,7 @@ class AdvertDetailSer(serializers.ModelSerializer):
     category = CategorySer()
     filters = FilterAdvertSer()
     images = GallerySer(read_only=True)
-    
+
     class Meta:
         model = Advert
         fields = (
@@ -72,8 +74,7 @@ class AdvertCreateSer(serializers.ModelSerializer):
             "date",
             "subject",
             "description",
-            "price",
-            #"images
+            "price"
         )
 
     def create(self, request):
