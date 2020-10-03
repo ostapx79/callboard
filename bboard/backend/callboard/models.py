@@ -59,18 +59,10 @@ class DateAdvert(models.Model):
 class Advert(models.Model):
     """Объявления"""
 
-    user = models.ForeignKey(
-        User, verbose_name="Пользователь", on_delete=models.CASCADE
-    )
-    category = models.ForeignKey(
-        Category, verbose_name="Категория", on_delete=models.CASCADE
-    )
-    filters = models.ForeignKey(
-        FilterAdvert, verbose_name="Фильтр", on_delete=models.CASCADE
-    )
-    date = models.ForeignKey(
-        DateAdvert, verbose_name="Срок", on_delete=models.CASCADE
-    )
+    user = models.ForeignKey(User, verbose_name="Пользователь", on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, verbose_name="Категория", on_delete=models.CASCADE)
+    filters = models.ForeignKey(FilterAdvert, verbose_name="Фильтр", on_delete=models.CASCADE)
+    date = models.ForeignKey(DateAdvert, verbose_name="Срок", on_delete=models.CASCADE)
     subject = models.CharField("Тема", max_length=200)
     description = models.TextField("Объявление", max_length=10000)
     images = models.ForeignKey(
@@ -95,8 +87,7 @@ class Advert(models.Model):
         return self.subject
 
     def get_absolute_url(self):
-        return reverse("advert-detail", kwargs={"category": self.category.slug,
-                                                "slug": self.slug})
+        return reverse("advert-detail", kwargs={"category": self.category.slug, "slug": self.slug})
 
     class Meta:
         verbose_name = "Объявление"
